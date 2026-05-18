@@ -1,17 +1,7 @@
-#!/bin/bash
-# ============================================================
-# Mental Health Support App — Build & Run Script
-# ============================================================
-# Requirements: Java JDK 17+ installed
-# Usage:
-#   chmod +x run.sh
-#   ./run.sh
-
 echo "Compiling Mental Health Support App..."
 
 mkdir -p out
 
-# Find all .java files and compile them
 find src -name "*.java" > sources.txt
 javac -d out @sources.txt
 
@@ -24,5 +14,4 @@ echo "Compilation successful!"
 echo "Running application..."
 echo ""
 
-# Run the main class
 java -cp out com.mentalhealth.Main
