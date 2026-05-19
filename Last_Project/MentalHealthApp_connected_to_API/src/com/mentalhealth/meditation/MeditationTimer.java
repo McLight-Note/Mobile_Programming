@@ -2,13 +2,7 @@ package com.mentalhealth.meditation;
 
 import java.util.Scanner;
 
-/**
- * Guided meditation timer with multiple session types.
- * Uses Thread.sleep() to count down the timer in real time.
- */
 public class MeditationTimer {
-
-    /** Predefined meditation sessions. */
     public enum Session {
         BREATHING(   "Breathing Exercise",      2,
                 "Focus only on your breath. Inhale for 4 seconds, hold for 4, exhale for 4."),
@@ -38,7 +32,6 @@ public class MeditationTimer {
         this.scanner = scanner;
     }
 
-    /** Main entry point — shows the meditation sub-menu. */
     public void show() {
         boolean running = true;
         while (running) {
@@ -89,8 +82,6 @@ public class MeditationTimer {
         }
     }
 
-    // ------------------------------------------------------------------ //
-
     private void runTimer(Session session, int minutes) {
         int totalSeconds = minutes * 60;
 
@@ -111,13 +102,12 @@ public class MeditationTimer {
         System.out.println("  Begin. \uD83E\uDDD8");
         System.out.println();
 
-        // Countdown loop — prints remaining time every 30 seconds
-        int nextMilestone = totalSeconds; // first print at start
+        int nextMilestone = totalSeconds;
         for (int remaining = totalSeconds; remaining > 0; remaining--) {
             if (remaining == nextMilestone || remaining % 30 == 0 || remaining <= 10) {
                 String timeStr = formatTime(remaining);
                 System.out.printf("  \u23F1  %s remaining%n", timeStr);
-                nextMilestone = -1; // only fire the "at start" print once
+                nextMilestone = -1;
             }
             sleep(1000);
         }
